@@ -6,3 +6,8 @@ cambio desde local
 segundo cambio desde local
 
 
+desede rama 2
+	algun texto
+	para la rama2
+	fin de rama2
+	
