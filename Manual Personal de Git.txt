@@ -1,0 +1,92 @@
+Manual Personal de Git
+
+
+ls -al ~/.ssh
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+Enter file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+Enter passphrase (empty for no passphrase): [Type a passphrase]
+# Enter same passphrase again: [Type passphrase again]
+
+Your identification has been saved in /Users/you/.ssh/id_rsa.
+# Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+# The key fingerprint is:
+# 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+
+
+mas info en
+https://wiki.archlinux.org/index.php/SSH_keys_(Espa%C3%B1ol)
+
+
+
+Copia la llave en el portapapeles y pegala en
+
+github.com-->Settings(dentro de tu profile)-->SSH keys-->Add SSH key
+en title pon alguna descripcion de tu computadora
+y  pega la llave
+por ultimo  click en el boton Add Key
+
+
+ahora tenemos que probar la coneccion
+
+en tu computadora escribe
+ssh -T git@github.com
+
+The authenticity of host 'github.com (207.97.227.239)' can't be established.
+# RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+# Are you sure you want to continue connecting (yes/no)?
+Hi username! You've successfully authenticated, but GitHub does not
+# provide shell access.
+
+
+
+
+
+Variables globales
+
+git@github.com:lpanguiano/holagit.git
+
+git config --global user.name "Leonardo"
+git config --global user.email "YOUR EMAIL ADDRESS"
+git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
+
+para cambiar el texto de un comit nos ponemos en el commit y
+git commit --amend 
+
+si el commit q se cambio ya habia sido push-eado al servidor
+es necesario push-searlo  de nuevo pero con la opcion --force
+git push --force example-branch
+
+
+si quieres cambiar mas de un commit
+git rebase -i HEAD~3   
+donde 3 es el numero de commits q cambiara
+se abrira un editor y donde dice pick
+pon reword
+guarda y cierra el archivo 
+se abrira otro/s archivos a los que le hayas puesto reword
+edita los commits 
+guarda y cierra
+
+
+
+
+para exportar una rama en zip
+git archive --format=zip master > ../direcotios/repositorio.zip
+
+
+si quieres esportar el ultimo commit
+
+git archive --format=zip HEAD > ../direcotios/repositorio.zip
+
+
+
+git stash 
+guardar temporalmente nuestros cambios que tenemos en el workspace
+(a los que aun no queremos hacer commit) para más adelante aplicarlos
+
+git stash 
+git stash list
+git stash apply     o   git stash apply stash@{0}
+
+
