@@ -1,5 +1,13 @@
 Manual Personal de Git
 
+ .d8888b.  d8b 888    
+d88P  Y88b Y8P 888    
+888    888     888    
+888        888 888888 
+888  88888 888 888    
+888    888 888 888    
+Y88b  d88P 888 Y88b.  
+ "Y8888P88 888  "Y888
 
 ls -al ~/.ssh
 
@@ -39,8 +47,17 @@ Hi username! You've successfully authenticated, but GitHub does not
 # provide shell access.
 
 
-
-
+                            .d888 d8b          
+                           d88P"  Y8P          
+                           888                 
+ .d8888b  .d88b.  88888b.  888888 888  .d88b.  
+d88P"    d88""88b 888 "88b 888    888 d88P"88b 
+888      888  888 888  888 888    888 888  888 
+Y88b.    Y88..88P 888  888 888    888 Y88b 888 
+ "Y8888P  "Y88P"  888  888 888    888  "Y88888 
+                                           888 
+                                      Y8b d88P 
+                                       "Y88P" 
 
 Variables globales
 
@@ -50,23 +67,35 @@ git config --global user.name "Leonardo"
 git config --global user.email "YOUR EMAIL ADDRESS"
 git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
 
-para cambiar el texto de un comit nos ponemos en el commit y
+
+
+
+                                              d8b 888    
+                                              Y8P 888    
+                                                  888    
+ .d8888b  .d88b.  88888b.d88b.  88888b.d88b.  888 888888 
+d88P"    d88""88b 888 "888 "88b 888 "888 "88b 888 888    
+888      888  888 888  888  888 888  888  888 888 888    
+Y88b.    Y88..88P 888  888  888 888  888  888 888 Y88b.  
+ "Y8888P  "Y88P"  888  888  888 888  888  888 888  "Y888
+
+Para cambiar el texto de un comit nos ponemos en el commit y
 git commit --amend 
 
 si el commit q se cambio ya habia sido push-eado al servidor
 es necesario push-searlo  de nuevo pero con la opcion --force
 git push --force example-branch
 
-
 si quieres cambiar mas de un commit
-git rebase -i HEAD~3   
-donde 3 es el numero de commits q cambiara
-se abrira un editor y donde dice pick
-pon reword
-guarda y cierra el archivo 
-se abrira otro/s archivos a los que le hayas puesto reword
-edita los commits 
-guarda y cierra
+	git rebase -i HEAD~3   
+	
+	donde 3 es el numero de commits q cambiara
+	se abrira un editor y donde dice pick
+	pon reword
+	guarda y cierra el archivo 
+	se abrira otro/s archivos a los que le hayas puesto reword
+	edita los commits 
+	guarda y cierra
 
 
 
@@ -90,3 +119,12 @@ git stash list
 git stash apply     o   git stash apply stash@{0}
 
 
+
+
+
+
+
+Permite cerrar el explorador de Windows ante un bloqueo y a continuación volverlo a iniciar.
+TASKKILL /F /IM explorer.exe & start explorer.exe
+Permite cerrar cualquier tarea en Windows que no responde.
+taskkill.exe /f /fi "status eq Not Responding"
