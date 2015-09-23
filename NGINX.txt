@@ -1,0 +1,139 @@
+Pretenders – I'll Stand By You Lyrics
+Oh, why you look so sad, the tears are in your eyes,
+Come on and come to me now, and don't be ashamed to cry,
+Let me see you through, 'cause I've seen the dark side too.
+When the night falls on you, you don't know what to do,
+Nothing you confess could make me love you less,
+
+I'll stand by you,
+I'll stand by you, won't let nobody hurt you,
+I'll stand by you
+
+So if you're mad, get mad, don't hold it all inside,
+Come on and talk to me now.
+Hey there, what you got to hide?
+I get angry too, well, I'm alive like you.
+When you're standing at the cross roads,
+And don't know which path to choose,
+Let me come along, 'cause even if you're wrong
+
+I'll stand by you,
+I'll stand by you, won't let nobody hurt you,
+I'll stand by you.
+Baby, even to your darkest hour, and I'll never desert you,
+I'll stand by you.
+And when, when the night falls on you baby,
+You're feeling all a lone, you're wandering on your own,
+I'll stand by you.
+
+I'll stand by you, won't let nobody hurt you,
+I'll stand by you, baby even to your darkest hour,
+And I'll never desert you,
+I'll stand by you,
+
+I'll stand by you.
+I'll stand by you, won't let nobody hurt you,
+I'll stand by you, baby even to your darkest hour,
+And I'll never desert you
+I'll stand by you
+Songwriters: HYNDE, CHRISSIE/KELLY, TOM/STEINBERG, WILLIAM E
+I'll Stand By You lyrics © EMI Music Publishing, Sony/ATV Music Publishing LLC
+
+
+
+
+
+
+start.bat
+		@ECHO OFF
+		start nginx
+		c:\nginx\php\php-cgi -b 127.0.0.1:9000 -c c:\nginx\php\php.ini
+
+stop.bat
+		@ECHO OFF
+		nginx -s quit
+		taskkill /f /IM php-cgi.exe
+
+
+
+start.vbs
+		Dim sh
+		Set sh = WScript.CreateObject("WScript.Shell")
+		sh.run "start.bat", 0
+		Set sh = Nothing
+
+stop.vbs
+		Dim sh
+		Set sh = WScript.CreateObject("WScript.Shell")
+		sh.run "stop.bat", 0
+		Set sh = Nothing
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mysql -h localhost -u user -p menagerie
+o
+$ mysql --user=your-user-name --password=your-password
+o
+mysql -u root -p
+
+
+
+
+mysql> show databases;
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
++--------------------+
+
+en dado caso que aun este la tabla test  hay que borrarla
+
+drop database test;
+delete from mysql.db where db='test' or db='test\_%';
+
+
+flush privileges; 
+quit;
+
+para detener el servicio, ejecutar esto desde la terminal de win:
+
+net stop mysql
+mysqld --remove
+
+
+
+

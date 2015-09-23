@@ -1,0 +1,23 @@
+en C:\wamp\www\wp-content\themes
+se encunetran los themes
+
+se puede crear una carpeta 
+un thema debe contener al menos
+index.php y style.css
+
+
+
+
+
+bloginfo
+
+<link rel="stylesheet" href="<?php bloginfo(stylesheet_url); ?>">
+igual a
+<link rel="stylesheet" href="/wp-content/themes/platzi/style.css">
+
+resultados
+<link rel="stylesheet" href="http://localhost/wp-content/themes/platzi/style.css">
+<link rel="stylesheet" href="/wp-content/themes/platzi/style.css">
+
+
+

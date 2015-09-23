@@ -1,6 +1,7 @@
 # holagit
 para hacer pruebas desde la terminal
 
+Contenido_WordPress
 
 cambio desde local
 segundo cambio desde local
