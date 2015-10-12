@@ -1,3 +1,29 @@
+﻿DB WordPress
+User wordpress
+pas GvLd9c3pef5tTeXq
+
+ver_variables_pasadas_por_post.php
+<?php 
+foreach($_POST as $nombre_campo => $valor){
+  echo '[' . $nombre_campo. ']' . '=' . $valor . "<br>\n";
+} 
+?>
+
+
+
+
+
+Paquetes a instalar para SublimeText
+
+si se usa SublimeText instalar  el package:
+WordPress Developer Resources
+para que es: seleccionando una palabra|funcion de Wordpress y dandole boton derecho se despliega un menu 
+WP Dev Rec 
+y podremos buscar esa funcion en el codex
+(se abrira una ventana en el navegador)
+
+
+
 en C:\wamp\www\wp-content\themes
 se encunetran los themes
 
@@ -5,9 +31,38 @@ se puede crear una carpeta
 un thema debe contener al menos
 index.php y style.css
 
+jerarquia de WordPress
+home.php --> index.php  -->  single.php
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+888      888                   d8b           .d888          
+888      888                   Y8P          d88P"           
+888      888                                888             
+88888b.  888  .d88b.   .d88b.  888 88888b.  888888  .d88b.  
+888 "88b 888 d88""88b d88P"88b 888 888 "88b 888    d88""88b 
+888  888 888 888  888 888  888 888 888  888 888    888  888 
+888 d88P 888 Y88..88P Y88b 888 888 888  888 888    Y88..88P 
+88888P"  888  "Y88P"   "Y88888 888 888  888 888     "Y88P"  
+                           888                              
+                      Y8b d88P                              
+                       "Y88P"  
 
 bloginfo
 
@@ -18,6 +73,273 @@ igual a
 resultados
 <link rel="stylesheet" href="http://localhost/wp-content/themes/platzi/style.css">
 <link rel="stylesheet" href="/wp-content/themes/platzi/style.css">
+
+
+admin_email          = admin@example.com
+atom_url             = http://www.example.com/home/feed/atom
+charset              = UTF-8
+comments_atom_url    = http://www.example.com/home/comments/feed/atom
+comments_rss2_url    = http://www.example.com/home/comments/feed
+description          = Just another WordPress blog
+home                 = http://www.example.com/home (DEPRECATED! use url option instead)
+html_type            = text/html
+language             = en-US
+name                 = Testpilot
+pingback_url         = http://www.example.com/home/wp/xmlrpc.php
+rdf_url              = http://www.example.com/home/feed/rdf
+rss2_url             = http://www.example.com/home/feed
+rss_url              = http://www.example.com/home/feed/rss
+siteurl              = http://www.example.com/home (DEPRECATED! use url option instead)
+stylesheet_directory = http://www.example.com/home/wp/wp-content/themes/largo
+stylesheet_url       = http://www.example.com/home/wp/wp-content/themes/largo/style.css
+template_directory   = http://www.example.com/home/wp/wp-content/themes/largo
+template_url         = http://www.example.com/home/wp/wp-content/themes/largo
+text_direction       = ltr
+url                  = http://www.example.com/home
+version              = 3.5
+wpurl                = http://www.example.com/home/wp
+
+
+
+WordPress Directories:
+home_url() 	Home URL 	http://www.example.com
+site_url() 	Site directory URL 	http://www.example.com or http://www.example.com/wordpress
+admin_url() 	Admin directory URL 	http://www.example.com/wp-admin
+includes_url() 	Includes directory URL 	http://www.example.com/wp-includes
+content_url() 	Content directory URL 	http://www.example.com/wp-content
+plugins_url() 	Plugins directory URL 	http://www.example.com/wp-content/plugins
+theme_url() 	Themes directory URL (#18302) 	http://www.example.com/wp-content/themes
+wp_upload_dir() 	Upload directory URL (returns an array) 	http://www.example.com/wp-content/uploads
+
+
+
+
+
+
+
+
+888    888                     888                            
+888    888                     888                            
+888    888                     888                            
+888888 88888b.   .d88b.        888  .d88b.   .d88b.  88888b.  
+888    888 "88b d8P  Y8b       888 d88""88b d88""88b 888 "88b 
+888    888  888 88888888       888 888  888 888  888 888  888 
+Y88b.  888  888 Y8b.           888 Y88..88P Y88..88P 888 d88P 
+ "Y888 888  888  "Y8888        888  "Y88P"   "Y88P"  88888P"  
+                                                     888      
+                                                     888      
+                                                     888 
+the loop
+esto lo trae un complemento para sublime text llamado
+wordpress (purplefish32...)
+
+<?php rewind_posts(); ?>
+<?php query_posts('order=Desc') ?>
+<?php //query_posts('posts_per_page=2') ?>
+
+<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+<!-- post -->
+<?php endwhile; ?>
+<!-- post navigation -->
+<?php else: ?>
+<!-- no posts found -->
+	<h3>No se encontraron entradas.</h3>
+<?php endif; ?>
+
+
+
+
+
+
+
+
+         888             888                                                     
+         888             888                                                     
+         888             888                                                     
+.d8888b  888888 888  888 888  .d88b.             .d8888b .d8888b  .d8888b  
+88K      888    888  888 888 d8P  Y8b           d88P"    88K      88K      
+"Y8888b. 888    888  888 888 88888888           888      "Y8888b. "Y8888b. 
+     X88 Y88b.  Y88b 888 888 Y8b.        d8b    Y88b.         X88      X88 
+ 88888P'  "Y888  "Y88888 888  "Y8888     Y8P     "Y8888P  88888P'  88888P' 
+                     888                                                         
+                Y8b d88P                                                         
+                 "Y88P"
+
+style.css
+poner la informacion del tema
+/*
+Theme Name: Platzi
+Theme URI: https://wordpress.org/themes/twentyfifteen/
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Description: Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer.
+Version: 1.3
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: black, blue, gray, pink, purple, white, yellow, dark, light, two-columns, left-sidebar, fixed-layout, responsive-layout, accessibility-ready, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
+Text Domain: twentyfifteen
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+
+
+
+
+
+
+888    888                             888                        d8b 888          
+888    888                             888                        Y8P 888          
+888    888                             888                            888          
+888888 88888b.  888  888 88888b.d88b.  88888b.  88888b.   8888b.  888 888 .d8888b  
+888    888 "88b 888  888 888 "888 "88b 888 "88b 888 "88b     "88b 888 888 88K      
+888    888  888 888  888 888  888  888 888  888 888  888 .d888888 888 888 "Y8888b. 
+Y88b.  888  888 Y88b 888 888  888  888 888 d88P 888  888 888  888 888 888      X88 
+ "Y888 888  888  "Y88888 888  888  888 88888P"  888  888 "Y888888 888 888  88888P'
+
+Imagenes destacadas
+
+crear archivo
+functions.php con 
+<?php
+add_theme_support('post-thumbnails');
+
+?>
+
+y al seleccionar una entrada nueva se vera en la parte inferior derecha la opcion
+		Imagen destacada
+		Asignar imagen destacada
+
+con esto podremos subir imagenes a wordpress para ponerlas como destacadas
+
+y para usar en el codigo 
+
+<?php  
+the_post_thumbnail('thumbnail')
+the_post_thumbnail('medium')
+the_post_thumbnail('full')
+the_post_thumbnail('mi_size')
+?>
+
+
+tambien podemos decirle a wordpress que cambie de tamaño a las imagenes que subimos con
+
+add_imagen_size('mi_size',220,180, true);  // con true corta la imagen
+
+entonces al subir una nueva imagen a wordpress se generara una imagen con el tamaño espedificado(aparte de las que wordpress ya generaba)
+
+
+
+88888888888 8888888888 888b     d888 8888888b.  888             d8888 88888888888 8888888888 
+    888     888        8888b   d8888 888   Y88b 888            d88888     888     888        
+    888     888        88888b.d88888 888    888 888           d88P888     888     888        
+    888     8888888    888Y88888P888 888   d88P 888          d88P 888     888     8888888    
+    888     888        888 Y888P 888 8888888P"  888         d88P  888     888     888        
+    888     888        888  Y8P  888 888        888        d88P   888     888     888        
+    888     888        888   "   888 888        888       d8888888888     888     888        
+    888     8888888888 888       888 888        88888888 d88P     888     888     8888888888
+
+
+plantillas
+
+para hacer una plantilla hay que hacer un archivo <cualquiernombre>.php
+con
+<?php
+/*
+Templete Name: nombre de la plantilla
+*/
+?>
+
+se genera el HTML normal como cualquier otra pantilla
+
+y para usarla nos vamos a WordPress
+seleccionamos una pagina y en las opciones del lado derecho en pnatillas seleccionamos nombre de la plantilla
+y WP usara esa plantilla en especial.
+
+
+
+<?php include (TEMPLATEPATH . '/logo.php')
+
+
+
+
+
+
+8888888b.  888                   d8b                   
+888   Y88b 888                   Y8P                   
+888    888 888                                         
+888   d88P 888 888  888  .d88b.  888 88888b.  .d8888b  
+8888888P"  888 888  888 d88P"88b 888 888 "88b 88K      
+888        888 888  888 888  888 888 888  888 "Y8888b. 
+888        888 Y88b 888 Y88b 888 888 888  888      X88 
+888        888  "Y88888  "Y88888 888 888  888  88888P' 
+                             888                       
+                        Y8b d88P                       
+                         "Y88P"  
+
+Plugins
+
+Yoast: Plugin para SEO
+
+hay que añadir esto en la pag donde queremos q se aplique el plugin
+
+		<?php wp_head()	?>
+
+en este espacio de head wordpress añadira codigo que le manden los plugins, por ejemplo Yoast.
+en el caso de yoast mete
+<meta name=""...>
+
+
+
+
+
+
+
+
+Menus
+
+para añadir menus
+hay que registrarlos en el archivo functions.php
+
+function register_my_menus() {
+	register_nav_menu('header-nav', __('descripcion_del_menu'));
+}
+add_action('init','register_my_menus')
+
+o para varios menus
+
+function register_my_menus() {
+	register_nav_menu(
+		array(
+		'menu-headereste' => __('menu del encabezado'),
+		'menu-footer' => __('menu del footer')
+		);
+}
+add_action('init','register_my_menus')
+
+
+y en el wordpress, en apariencia-->menu
+crear los dos menus header, footer
+con el contenido (opciones) que llevaran los menus
+
+y en la pestaña lugares: 
+ligar el 'menu del encaezado' con el headereste 
+y 'menu del footer' con el footer
+
+por ultimo en el php poner
+<?php
+wp_nav_menu(
+	array(
+		'theme_location' => 'menu-headereste',
+		'container' => 'nav'     //  usara el HTML de <nav> en lugar del <div>
+		'container_class' => 'nav'     //  pondra en el nav un <nav class="nav"
+
+	);
+)
+?>
+
+
 
 
 

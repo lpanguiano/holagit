@@ -42,7 +42,8 @@ Your identification has been saved in /Users/you/.ssh/id_rsa.
 
 mas info en
 https://wiki.archlinux.org/index.php/SSH_keys_(Espa%C3%B1ol)
-
+o
+https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html
 
 
 Copia la llave en el portapapeles y pegala en
@@ -65,6 +66,69 @@ Hi username! You've successfully authenticated, but GitHub does not
 # provide shell access.
 
 
+
+Si no te gusta escribir la frase-clave cada que haces un push:
+
+1.-Crear un archivo SSH config
+(~/.ssh/config)
+debe tener:
+
+Host bitbucket.org
+ IdentityFile ~/.ssh/id_rsa     //id_rsa o el archivo donde este la clave PRIVADA, sin el .pub
+^
+|
+ojo con el espacio antes de IdentityFile
+
+
+
+2.-Actualizar|crea el ~/.bashrc  con:
+SSH_ENV=$HOME/.ssh/environment
+  
+# start the ssh-agent
+function start_agent {
+    echo "Initializing new SSH agent..."
+    # spawn ssh-agent
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add
+}
+  
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+   ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+      start_agent;
+  }
+else
+    start_agent;
+fi
+
+
+Abrir o reiniciar GitBash el sistema 
+saldra el texto y pedira la frase-clave:
+
+  Welcome to Git (version 1.7.8-preview20111206)
+  Run 'git help git' to display the help index.
+  Run 'git help <command>' to display help for specific commands.
+  Enter passphrase for /c/Documents and Settings/{user}/.ssh/id_rsa:
+
+pon la frase-clave
+After accepting your passphrase, the system displays the command shell prompt. 
+
+Verify that the script identity added your identity successfully by querying the SSH agent:
+$ ssh-add -l
+2048 0f:37:21:af:1b:31:d5:cd:65:58:b2:68:4a:ba:a2:46 /Users/manthony/.ssh/id_rsa (RSA)
+
+
+
+
+
+
+
+
+
+
                             .d888 d8b          
                            d88P"  Y8P          
                            888                 
@@ -78,6 +142,20 @@ Y88b.    Y88..88P 888  888 888    888 Y88b 888
                                        "Y88P" 
 
 Variables globales
+.gitconfig (en el $HOME directory)
+
+Lo que contenia este file en:
+[user]
+  name = Leonardo
+  email = leonardo.perez.anguiano@gmail.com
+[color]
+  ui = true
+[core]
+  editor = 'C:/Program Files/Sublime Text 3/subl.exe' -w
+[gui]
+  recentrepo = C:/Users/home880/Documents/pruebagit/holagit
+------------------------------------------------------------
+
 
 git@github.com:lpanguiano/holagit.git
 
@@ -85,6 +163,16 @@ git config --global user.name "Leonardo"
 git config --global user.email "YOUR EMAIL ADDRESS"
 git config --global core.editor "'C:/Program Files/Sublime Text 3/subl.exe' -w"
 
+
+Se pueden añadir alias como:
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
 
 
 
@@ -133,6 +221,7 @@ Y88b.  888  888 Y88b 888
 
 Etiquetas anotadas
 git tag -a v0.1.3 -m 'textodelaanotacion'   [ID SHA]
+git tag -a v0.0.0 -m 'INICIO'
 
 git tag
 		v0.1.1
@@ -175,6 +264,8 @@ git push origin v1.5
 
 
 git branch -v
+git branch -a
+
 
 git branch rama_nueva		// crea una rama
 git checkout rama_nueva		// se posiciona en ella
@@ -216,6 +307,136 @@ git config --global alias.last 'log -1 HEAD'
 
 
 
+             d8b 888    d8b                                             
+             Y8P 888    Y8P                                             
+                 888                                                    
+     .d88b.  888 888888 888  .d88b.  88888b.   .d88b.  888d888  .d88b.  
+    d88P"88b 888 888    888 d88P"88b 888 "88b d88""88b 888P"   d8P  Y8b 
+    888  888 888 888    888 888  888 888  888 888  888 888     88888888 
+d8b Y88b 888 888 Y88b.  888 Y88b 888 888  888 Y88..88P 888     Y8b.     
+Y8P  "Y88888 888  "Y888 888  "Y88888 888  888  "Y88P"  888      "Y8888  
+         888                     888                                    
+    Y8b d88P                Y8b d88P                                    
+     "Y88P"                  "Y88P"       
+
+.gitignore
+ejemplo para el archivo .gitignore :
+
+# Laravel
+/bootstrap/compiled.php
+.env.*.php
+.env.php
+.env
+
+
+# -- Symfony2 -----------------------------------------
+app/bootstrap.php.cache
+app/bootstrap_cache.php.cache
+app/config/parameters.ini
+app/config/parameters.yml
+app/cache/*
+app/logs/*
+vendor/*
+web/bundles/*
+web/css/*
+web/js/*
+web/uploads/*
+ 
+# -- Composer -----------------------------------------
+composer.phar
+ 
+# -- PHPUnit ------------------------------------------
+app/phpunit.xml  
+ 
+# -- Editores -----------------------------------------
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+ 
+# eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.buildpath
+ 
+# phpstorm
+.idea/
+ 
+# textmate
+*.tmproj
+*.tmproject
+tmtags
+ 
+# sublimetext
+/*.sublime-project
+*.sublime-workspace
+ 
+# netbeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+ 
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+ 
+# Linux
+.*
+!.gitignore
+!.htaccess
+*~
+ 
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+
+
+
+
+         888                      888      
+         888                      888      
+         888                      888      
+.d8888b  888888  8888b.  .d8888b  88888b.  
+88K      888        "88b 88K      888 "88b 
+"Y8888b. 888    .d888888 "Y8888b. 888  888 
+     X88 Y88b.  888  888      X88 888  888 
+ 88888P'  "Y888 "Y888888  88888P' 888  888
+
+git stash 
+guardar temporalmente nuestros cambios que tenemos en el workspace
+(a los que aun no queremos hacer commit) para más adelante aplicarlos
+
+git stash 
+git stash list
+git stash apply     o   git stash apply stash@{0}
 
 
 
@@ -224,6 +445,30 @@ git config --global alias.last 'log -1 HEAD'
 
 
 
+
+
+
+
+
+
+
+                           888      
+                           888      
+                           888      
+88888b.  888  888 .d8888b  88888b.  
+888 "88b 888  888 88K      888 "88b 
+888  888 888  888 "Y8888b. 888  888 
+888 d88P Y88b 888      X88 888  888 
+88888P"   "Y88888  88888P' 888  888 
+888                                 
+888                                 
+888   
+
+git push origin [ramalocal]:[ramaremota]
+
+git push origin :rama_a_borrar_en_servidor
+To git@github.com:......
+ - [deleted]         rama_a_borrar_en_servidor
 
 
 
@@ -240,7 +485,8 @@ git config --global alias.last 'log -1 HEAD'
 git init
 git remote -v 	//me aseguro de que no haya nada
 git remote add origin git@github.com:lpanguiano/portafolio.git
-git remote show [nombre]
+git remote set-url origin git@github.com:lpanguiano/portafolio.git   //re-escribe la url del origin
+git remote show [remote-name]
 git fetch origin/master // download la master...
 git merge origin/master // fusionamos la masterremota con la masterlocal
 
@@ -268,21 +514,29 @@ si quieres esportar el ultimo commit
 
 
 
-git stash 
-guardar temporalmente nuestros cambios que tenemos en el workspace
-(a los que aun no queremos hacer commit) para más adelante aplicarlos
-
-git stash 
-git stash list
-git stash apply     o   git stash apply stash@{0}
 
 
 
-git push origin [ramalocal]:[ramaremota]
 
-git push origin :rama_a_borrar_en_servidor
-To git@github.com:......
- - [deleted]         rama_a_borrar_en_servidor
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -290,3 +544,5 @@ Permite cerrar el explorador de Windows ante un bloqueo y a continuación volver
 TASKKILL /F /IM explorer.exe & start explorer.exe
 Permite cerrar cualquier tarea en Windows que no responde.
 taskkill.exe /f /fi "status eq Not Responding"
+
+http://patorjk.com/software/taag/#p=display&h=1&f=Colossal&t=.gitignore
