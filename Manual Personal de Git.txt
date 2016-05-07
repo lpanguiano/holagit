@@ -244,11 +244,107 @@ tambien se pueden push-ear tags
 git push origin v1.5
 
 
+                                   888    
+                                   888    
+                                   888    
+888d888  .d88b.  .d8888b   .d88b.  888888 
+888P"   d8P  Y8b 88K      d8P  Y8b 888    
+888     88888888 "Y8888b. 88888888 888    
+888     Y8b.          X88 Y8b.     Y88b.  
+888      "Y8888   88888P'  "Y8888   "Y888
+
+Deshacer cambios en un file (un control+z)	(local)
+git checkout -- file
+
+
+si ya se hizo un add . o add file		(stage)
+git reset HEAD file
+y despues hacer
+git checkout -- file
+
+si ya se hizo un commit                		(commit)
+git reset <codigo del penultimo commit>
+	(deja eb ek stage los cambios)("modified" en rojo)
+y despues hacer
+git checkout -- file
+o
+git reset --hard <codigo del penultimo commit>
+		(NO deja en el stage los cambios, ni en local)
+git reset --soft <codigo del penultimo commit>
+		(deja cambios en el stage)("modified" en verde)
+
+
+
+                                           888    
+                                           888    
+                                           888    
+888d888  .d88b.  888  888  .d88b.  888d888 888888 
+888P"   d8P  Y8b 888  888 d8P  Y8b 888P"   888    
+888     88888888 Y88  88P 88888888 888     888    
+888     Y8b.      Y8bd8P  Y8b.     888     Y88b.  
+888      "Y8888    Y88P    "Y8888  888      "Y888
+
+git revert   
+lo que se escribio se quita y 
+lo que se quito se pone
+
+git revert HEAD  deja commit
+si se quieren revertir mas de un commit y no se quiere dejar tanto commit
+
+git revert --no-commit HEAD~1
+git revert --continue
+dejando un unico commit
 
 
 
 
 
+
+                 888                                 
+                 888                                 
+                 888                                 
+888d888  .d88b.  88888b.   8888b.  .d8888b   .d88b.  
+888P"   d8P  Y8b 888 "88b     "88b 88K      d8P  Y8b 
+888     88888888 888  888 .d888888 "Y8888b. 88888888 
+888     Y8b.     888 d88P 888  888      X88 Y8b.     
+888      "Y8888  88888P"  "Y888888  88888P'  "Y8888 
+
+si tenemos 
+master ------------C
+dev1      \--A---B----D
+si en la rama dev1 hacemos  
+git checkout dev1
+git rebase master    obtenemos
+		D (HEAD, dev1)
+		|
+		B
+		|
+		A
+		|
+		C (master)
+
+luego hay que hacer
+git checkout master
+git merge dev1     obtenemos
+
+		D (HEAD, dev1, master)
+		|
+		B
+		|
+		A
+		|
+		C
+
+
+
+git rebase -i HEAD~4
+pick A				pick A
+pick B				squash B
+pick C				squash C
+pick D				squash D
+obtenemos			obtenemos
+A-B-C-D 			--A   (se aplastan todos los commit en uno solo, 
+				quedando solo un commit con mensaje nuevo)
 
 
 
@@ -432,11 +528,23 @@ Icon
 
 git stash 
 guardar temporalmente nuestros cambios que tenemos en el workspace
-(a los que aun no queremos hacer commit) para más adelante aplicarlos
+(a los que aun no queremos hacer commit) para más adelante aplicarlos,
+por ejemplo para cambiarnos de rama pero no queremos dejar un commit
 
-git stash 
-git stash list
-git stash apply     o   git stash apply stash@{0}
+git stash // mete los cambios al stash 
+
+git stash list  // muestra los stash que se han metido, se meten como una pila, el ultimo sera el primero en salir
+git stash apply // aplica|mete los cambios al area de trabajo
+o git stash apply stash@{0} 
+o git stash apply stash@{1}  // para aplicar el penultimo sin aplicar lo del ultimo
+aplly no borra el stash, para hacerlo hay que 
+git stash drop 
+
+git stash pop hace lo mismo que un apply y luego drop.
+
+si un stash se llegara a quedar por mucho tiempo y no lo queremos borrar,
+se puede pasar a una rama
+git stash branch <namerama> [<stash>]
 
 
 
